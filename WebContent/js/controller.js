@@ -17,10 +17,28 @@ var myApp = angular.module('Demo',[]);
 
 
 myApp.controller('loginController', function($scope, $http){
-	
-	$scope.submit = function(){
+	$scope.userName = null;
+	$scope.password = null;
+	$scope.submit = function(userName, password){
+		var data = {
+				userName: userName,
+				password: password
+		};
 
-		$http.post('rest/login/authenticate', $scope.userName, $scope.password)
+		//$http.post(url, data, config)
+		$http.post('http://localhost:8080/WebService/rest/login/authenticate', JSON.stringify(data))
+			.then(
+					function(response){
+						if(response.data) //if authentication is true
+							alert('Welcome..');
+						else
+							alert('Not Welcome..');
+					}, 
+					//error handling for $http.post()
+					function(response){
+						alert('Error');	
+					}
+				);
 		
 		
 		
@@ -33,5 +51,5 @@ myApp.controller('loginController', function($scope, $http){
 //			alert('Invalid..');
 //		}
 		
-	}
+	};
 });

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<meta charset="UTF-8">
+<meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <script type="text/javascript" src="js/angular.js"></script>
 <script type="text/javascript" src="js/controller.js"></script>
@@ -10,8 +9,8 @@
 
 
 <body ng-app = "Demo">
-
-	<!-- 
+ 
+ <!-- 
 	<table ng-controller = "loginController">
 		<tr>
 			<td>UserId</td>
@@ -22,16 +21,17 @@
 			<td>{{user.password}}</td>
 		</tr>
 	</table>
-	 -->
-	
+ -->	
+	 
 	<div ng-controller = "loginController">
 		<form action="/" id = "login">
 			userName: <input type="text" id="userName" ng-model="userName" /><br/>
 			password: <input type="text" id="password" ng-model="password" /><br/>
-			<button type="button" ng-click="submit()">Login</button>
+			<button type="button" ng-click="submit(userName, password)">Login</button> <!-- submit() takes in inputs from user -->
 		</form>
 	</div>
 
+	
 </body>
 
 </html>
